@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      template: `
+        <div class="container">
+          <h1>Comentários</h1>
+          <hr/>
+
+          <div class="form form-group">
+            <p>
+              <input placeholder="Nome" type="text" name="author" class="form-control" />
+            </p>
+
+            <p>
+              <textarea placeholder="Comentário" type="text" name="message" class="form-control"></textarea>
+            </p>
+            <button v-on:click="enviarComentario" type="submit" class="btn btn-primary">Enviar Comentário</button>
+          </div>
+          <hr/>
+
+          <div class="list-group">
+            <div class="list-group-item" v-for="comment in comments">
+              <span class="comment__author">Autor: <strong>{{ comment.name }}</strong></span>
+              <p>{{ comment.message }}</p>
+              <div>
+                <a href="#" title="Excluir">Excluir</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      data() {
+        return {
+          comments: [
+            {
+              name: 'Fulano',
+              message: 'Mensagem aleatória'
+            }
+          ]
+        }
+      },
+      methods: {
+        enviarComentario() {
+          console.log("enviar");
+        }
+      }
+    })
+  </script>
+</body>
+</html>
